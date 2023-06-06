@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="./style.css">
+    
+</head>
+
+<body>
+    <div class="container">
+        <div class="div1">
+            <form>
+                <label for="id">ID:</label>
+                <input type="text" id="id" name="id" onchange="validate('id')">
+                <span class="error" id="id-error"></span>
+                
+                <label for="firstName">First Name:</label>
+                <input type="text" id="firstName" name="firstName" onchange="validate('firstName')">
+                <span class="error" id="firstName-error"></span>
+                
+                <label for="lastName">Last Name:</label>
+                <input type="text" id="lastName" name="lastName" onchange="validate('lastName')">
+                <span class="error" id="lastName-error"></span>
+                
+                <label for="age">Age:</label>
+                <input type="text" id="age" name="age" onchange="validate('age')">
+                <span class="error" id="age-error"></span>
+                
+                <label for="gender">Gender:</label>
+                <select id="gender" name="gender">
+                    <option value="male">Male</option>
+                    <option value="female">Female</option>
+                    <option value="other">Other</option>
+                </select>
+                
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" onchange="validate('email')">
+                <span class="error" id="email-error"></span>
+                
+                <label for="phoneNumber">Phone Number:</label>
+                <input type="tel" id="phoneNumber" name="phoneNumber" onchange="validate('phoneNumber')">
+                <span class="error" id="phoneNumber-error"></span>
+                
+                <label for="address">Address:</label>
+                <input type="text" id="address" name="address">
+                
+                <label for="major">Major:</label>
+                <input type="text" id="major" name="major">
+                
+                <label for="yearOfStudy">Year of Study:</label>
+                <input type="text" id="yearOfStudy" name="yearOfStudy" onchange="validate('yearOfStudy')">
+                <span class="error" id="yearOfStudy-error"></span>
+                
+                <label for="status"></label>
+                
+                
+                <input type="button" value="Submit" onclick="register()">
+                <br>
+                <span class="error" id="submit-error"></span>
+            </form>
+        </div>
+        <div class="div2">
+
+            <div class="div-table">
+                <div>
+                    <h2>Filtering Student </h2>
+
+                    <div>
+                        <p style="    margin: 0;padding: 0;">Filter by Age </p>
+                        <input type="text" id="filter-age" name="age" style="margin-top: 8px;">
+                        <p style="    margin: 0;padding: 0;">Filter by Major </p>
+                        <input type="text" id="filter-major" name="major" style="margin-top: 8px;">
+                    </div>
+                    <div>
+                        <button onclick="filterUsers()">Filter</button>
+                    </div>
+                </div>
+                <div style="border: 2px double #323132;  margin-top: 25px; margin-bottom: 25px;"></div>
+                <div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Name</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tableBody">
+                            
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="div-data">
+                <div id="std-data" class="student-data display-none">
+                    <h2>Student Information</h2>
+                    <p><strong>ID:</strong> <span id="id">2</span></p>
+                    <p><strong>First Name:</strong> <span id="firstName">John</span></p>
+                    <p><strong>Last Name:</strong> <span id="lastName">Doe</span></p>
+                    <p><strong>Age:</strong> <span id="age">20</span></p>
+                    <p><strong>Gender:</strong> <span id="gender">Male</span></p>
+                    <p><strong>Email:</strong> <span id="email">johndoe@example.com</span></p>
+                    <p><strong>Phone Number:</strong> <span id="phoneNumber">123-456-7890</span></p>
+                    <p><strong>Address:</strong> <span id="address">123 Main Street</span></p>
+                    <p><strong>Major:</strong> <span id="major">Computer Science</span></p>
+                    <p><strong>Year of Study:</strong> <span id="yearOfStudy">2</span></p>
+                    <p><strong>Status:</strong> <span id="status">Active</span></p>
+                    <p><strong>Is Deleted:</strong> <span id="isDelete">false</span></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+    <script src="./script.js"></script>
+</body>
+
+</html>
