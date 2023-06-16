@@ -69,9 +69,16 @@ function App() {
       setWinner(status);
     }
   };
+  const resetGame = () => {
+    let cur = Array(9).fill(null);
+    setCells(cur);
+    setWinner(null);
+    setTurn(true);
+  };
   return (
     <div className="container">
       <div>
+        <button onClick={resetGame}>Reset game</button>
         <h1>{winner ? `Winner is ${winner}` : ``}</h1>
         <div className="row">
           <div className="cell" onClick={() => !winner && handleCellClick(0)}>
