@@ -7,7 +7,10 @@ import problems from "./data/data1";
 function App() {
   const [selectValue, setSelectValue] = useState("");
   const [from, setFrom] = useState(0);
-  const [to, setTo] = useState(0);
+  const [to, setTo] = useState(5000);
+  const [checkBoxes, setCheckBoxes] = useState({
+    grayCheck: false,
+  });
   useEffect(() => {
     let a = 0;
     let b = 0;
@@ -35,10 +38,14 @@ function App() {
     } else if (selectValue == "red") {
       a = 2800;
       b = 3199;
+    } else {
+      a = 0;
+      b = 5000;
     }
     setFrom(a);
     setTo(b);
   }, [selectValue]);
+  console.log("checkBoxes :>> ", checkBoxes);
   return (
     <div className="container mt-3">
       <div className="row">
@@ -61,6 +68,86 @@ function App() {
           />
         </div>
       </div>
+      <div className="row">
+        <div className="col">
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="checkgray"
+              name="grayCheck"
+              onChange={(e) =>
+                setCheckBoxes((prev) => {
+                  return { ...prev, [e.target.name]: !e.target.checked };
+                })
+              }
+            />
+            <label className="form-check-label" htmlFor="checkgray">
+              Gray
+            </label>
+          </div>
+        </div>
+        <div className="col">
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="checkgray"
+            />
+            <label className="form-check-label" htmlFor="checkgray">
+              Gray
+            </label>
+          </div>
+        </div>
+        <div className="col">
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="checkgray"
+            />
+            <label className="form-check-label" htmlFor="checkgray">
+              Gray
+            </label>
+          </div>
+        </div>
+        <div className="col">
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="checkgray"
+            />
+            <label className="form-check-label" htmlFor="checkgray">
+              Gray
+            </label>
+          </div>
+        </div>
+        <div className="col">
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="checkgray"
+            />
+            <label className="form-check-label" htmlFor="checkgray">
+              Gray
+            </label>
+          </div>
+        </div>
+        <div className="col">
+          <div className="form-check">
+            <input
+              className="form-check-input"
+              type="checkbox"
+              id="checkgray"
+            />
+            <label className="form-check-label" htmlFor="checkgray">
+              Gray
+            </label>
+          </div>
+        </div>
+      </div>
       <div className="row mt-3">
         <div className="col">
           <select
@@ -68,6 +155,7 @@ function App() {
             className="form-select"
             onChange={(e) => setSelectValue(e.target.value)}
           >
+            <option value="all">All</option>
             <option value="gray">Gray</option>
             <option value="brown">Brown</option>
             <option value="green">Green</option>
@@ -87,16 +175,16 @@ function App() {
             else if (a.rating > b.rating) return -1;
             return 0;
           })
-          .map((problem) => {
+          .map((problem, index) => {
             return (
-              <li className="list-group-item">
+              <li key={index} className="list-group-item">
                 <div className="row">
-                  <div class="col">
+                  <div className="col">
                     <a href={problem.link} style={{ color: problem.color }}>
                       {problem.title}
                     </a>
                   </div>
-                  <div class="col">
+                  <div className="col">
                     {/* <span>{problem.points}</span> */}
                     <span>{problem.rating}</span>
                   </div>
