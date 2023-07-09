@@ -10,6 +10,13 @@ function App() {
   const [to, setTo] = useState(5000);
   const [checkBoxes, setCheckBoxes] = useState({
     grayCheck: false,
+    brownCheck: false,
+    greenCheck: false,
+    cyanCheck: false,
+    blueCheck: false,
+    yellowCheck: false,
+    orangeCheck: false,
+    redCheck: false,
   });
   useEffect(() => {
     let a = 0;
@@ -76,11 +83,12 @@ function App() {
               type="checkbox"
               id="checkgray"
               name="grayCheck"
-              onChange={(e) =>
+              defaultChecked={checkBoxes.grayCheck}
+              onChange={(e) => {
                 setCheckBoxes((prev) => {
                   return { ...prev, [e.target.name]: !e.target.checked };
-                })
-              }
+                });
+              }}
             />
             <label className="form-check-label" htmlFor="checkgray">
               Gray
@@ -92,10 +100,16 @@ function App() {
             <input
               className="form-check-input"
               type="checkbox"
-              id="checkgray"
+              id="checkbrown"
+              name="brownCheck"
+              onChange={(e) =>
+                setCheckBoxes((prev) => {
+                  return { ...prev, [e.target.name]: !e.target.checked };
+                })
+              }
             />
-            <label className="form-check-label" htmlFor="checkgray">
-              Gray
+            <label className="form-check-label" htmlFor="checkbrown">
+              Brown
             </label>
           </div>
         </div>
@@ -169,7 +183,33 @@ function App() {
       </div>
       <ul className="list-group mt-3">
         {problems
-          .filter((problem) => problem.rating >= from && problem.rating <= to)
+          .filter((problem) => {
+            if (checkBoxes.grayCheck) {
+              return problem.rating >= 0 && problem.rating < 400;
+            }
+            if (checkBoxes.brownCheck) {
+              return problem.rating >= 400 && problem.rating < 800;
+            }
+            if (checkBoxes.greenCheck) {
+              return problem.rating >= 800 && problem.rating < 1200;
+            }
+            if (checkBoxes.cyanCheck) {
+              return problem.rating >= 1200 && problem.rating < 1600;
+            }
+            if (checkBoxes.blueCheck) {
+              return problem.rating >= 1600 && problem.rating < 2000;
+            }
+            if (checkBoxes.yellowCheck) {
+              return problem.rating >= 2000 && problem.rating < 2400;
+            }
+            if (checkBoxes.orangeCheck) {
+              return problem.rating >= 2400 && problem.rating < 2800;
+            }
+            if (checkBoxes.redCheck) {
+              return problem.rating >= 2800 && problem.rating < 3200;
+            }
+            return problem.rating >= from && problem.rating <= to;
+          })
           .sort((a, b) => {
             if (a.rating < b.rating) return 1;
             else if (a.rating > b.rating) return -1;
